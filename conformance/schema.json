@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://structor.dev/forge/conformance/vector.schema.json",
+  "title": "Forge conformance vector",
+  "description": "One language-neutral resolver test case. Every Forge resolver implementation (Lean, Go, TypeScript, Python) must derive `expect` from (obligation, evidence, supersessions). The resolver reads no timestamps: law 3, 'no recency, no fiat'.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "obligation", "evidence", "supersessions", "expect"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable vector id, e.g. 'V3'.",
+      "pattern": "^V[0-9]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable summary of what the case pins."
+    },
+    "obligation": {
+      "type": "object",
+      "description": "The leaf claim being resolved.",
+      "additionalProperties": false,
+      "required": ["domainTags", "acceptancePolicy", "retired"],
+      "properties": {
+        "domainTags": {
+          "type": "array",
+          "description": "Declared domain of the claim. A valid, reproducible witness whose scopeTags intersect these dominates.",
+          "items": { "type": "string" }
+        },
+        "acceptancePolicy": {
+          "type": "string",
+          "description": "What it takes to discharge this leaf — cited in a discharged verdict."
+        },
+        "retired": {
+          "type": "boolean",
+          "description": "True once the scope is retired; the obligation is kept for history and derives audit_only, never governing."
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Evidence attached to the obligation.",
+      "items": { "$ref": "#/$defs/evidence" }
+    },
+    "supersessions": {
+      "type": "array",
+      "description": "First-class supersession edges. A subject (evidence id or obligation id) stops counting; a cross_type_invalidation on the obligation itself auto-reopens it.",
+      "items": { "$ref": "#/$defs/supersession" }
+    },
+    "expect": {
+      "$ref": "#/$defs/oblState",
+      "description": "The one obligation state every implementation must derive for this input."
+    }
+  },
+  "$defs": {
+    "polarity": {
+      "type": "string",
+      "enum": ["supports", "falsifies"]
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "formal_proof",
+        "deterministic_check",
+        "executed_test",
+        "counterexample",
+        "adversarial_campaign",
+        "human_attestation"
+      ]
+    },
+    "reproducibility": {
+      "type": "string",
+      "enum": ["kernel_checked", "deterministic", "replayable", "testimonial"]
+    },
+    "validity": {
+      "type": "string",
+      "enum": ["valid", "temporarily_unverifiable", "invalid"]
+    },
+    "supersessionKind": {
+      "type": "string",
+      "enum": [
+        "status_superseded",
+        "superseded_by",
+        "cross_type_invalidation",
+        "decision",
+        "exclude_marker"
+      ]
+    },
+    "oblState": {
+      "type": "string",
+      "description": "The seven derived obligation states. Of these, only open and discharged govern; falsified, reopened, contested, unverifiable, and audit_only are non-governing.",
+      "enum": [
+        "open",
+        "discharged",
+        "falsified",
+        "reopened",
+        "contested",
+        "unverifiable",
+        "audit_only"
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["polarity", "method", "reproducibility", "validity", "scopeTags"],
+      "properties": {
+        "polarity": { "$ref": "#/$defs/polarity" },
+        "method": {
+          "$ref": "#/$defs/method",
+          "description": "How the evidence was produced. Must be human_attestation whenever reproducibility is testimonial."
+        },
+        "reproducibility": { "$ref": "#/$defs/reproducibility" },
+        "validity": { "$ref": "#/$defs/validity" },
+        "scopeTags": {
+          "type": "array",
+          "description": "Domain this evidence actually covered. It lands in-scope iff it intersects the obligation's domainTags (or contains '*').",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "supersession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject", "kind", "replacedBy", "evidence"],
+      "properties": {
+        "subject": {
+          "type": "string",
+          "description": "The fact that no longer governs — an evidence id or an obligation id."
+        },
+        "kind": { "$ref": "#/$defs/supersessionKind" },
+        "replacedBy": {
+          "type": "array",
+          "description": "Successor fact ids, if any.",
+          "items": { "type": "string" }
+        },
+        "evidence": {
+          "type": "array",
+          "description": "Evidence ids cited by this supersession edge.",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

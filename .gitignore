@@ -1,0 +1,4 @@
+.DS_Store
+/forge-harness-pilot
+*.test
+*.out

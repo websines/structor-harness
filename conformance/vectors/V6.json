@@ -1,0 +1,10 @@
+{
+  "id": "V6",
+  "name": "only invalid evidence",
+  "obligation": { "domainTags": ["x"], "acceptancePolicy": "p", "retired": false },
+  "evidence": [
+    { "polarity": "supports", "method": "executed_test", "reproducibility": "deterministic", "validity": "invalid", "scopeTags": ["x"] }
+  ],
+  "supersessions": [],
+  "expect": "unverifiable"
+}

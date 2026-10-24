@@ -1,0 +1,2400 @@
+[
+  {
+    "id": "EX-r0-m00",
+    "name": "no-evidence",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": null,
+    "supersessions": [],
+    "expect": "open"
+  },
+  {
+    "id": "EX-r0-m01",
+    "name": "broken",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "unverifiable"
+  },
+  {
+    "id": "EX-r0-m02",
+    "name": "sup_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "discharged"
+  },
+  {
+    "id": "EX-r0-m03",
+    "name": "broken+sup_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "discharged"
+  },
+  {
+    "id": "EX-r0-m04",
+    "name": "sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "discharged"
+  },
+  {
+    "id": "EX-r0-m05",
+    "name": "broken+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "discharged"
+  },
+  {
+    "id": "EX-r0-m06",
+    "name": "sup_repro+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "discharged"
+  },
+  {
+    "id": "EX-r0-m07",
+    "name": "broken+sup_repro+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "discharged"
+  },
+  {
+    "id": "EX-r0-m08",
+    "name": "fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m09",
+    "name": "broken+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m10",
+    "name": "sup_repro+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m11",
+    "name": "broken+sup_repro+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m12",
+    "name": "sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m13",
+    "name": "broken+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m14",
+    "name": "sup_repro+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m15",
+    "name": "broken+sup_repro+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m16",
+    "name": "fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "open"
+  },
+  {
+    "id": "EX-r0-m17",
+    "name": "broken+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "unverifiable"
+  },
+  {
+    "id": "EX-r0-m18",
+    "name": "sup_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "discharged"
+  },
+  {
+    "id": "EX-r0-m19",
+    "name": "broken+sup_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "discharged"
+  },
+  {
+    "id": "EX-r0-m20",
+    "name": "sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "contested"
+  },
+  {
+    "id": "EX-r0-m21",
+    "name": "broken+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "contested"
+  },
+  {
+    "id": "EX-r0-m22",
+    "name": "sup_repro+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "contested"
+  },
+  {
+    "id": "EX-r0-m23",
+    "name": "broken+sup_repro+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "contested"
+  },
+  {
+    "id": "EX-r0-m24",
+    "name": "fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m25",
+    "name": "broken+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m26",
+    "name": "sup_repro+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m27",
+    "name": "broken+sup_repro+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m28",
+    "name": "sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m29",
+    "name": "broken+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m30",
+    "name": "sup_repro+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r0-m31",
+    "name": "broken+sup_repro+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "falsified"
+  },
+  {
+    "id": "EX-r1-m00",
+    "name": "retired · no-evidence",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": null,
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m01",
+    "name": "retired · broken",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m02",
+    "name": "retired · sup_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m03",
+    "name": "retired · broken+sup_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m04",
+    "name": "retired · sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m05",
+    "name": "retired · broken+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m06",
+    "name": "retired · sup_repro+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m07",
+    "name": "retired · broken+sup_repro+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m08",
+    "name": "retired · fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m09",
+    "name": "retired · broken+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m10",
+    "name": "retired · sup_repro+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m11",
+    "name": "retired · broken+sup_repro+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m12",
+    "name": "retired · sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m13",
+    "name": "retired · broken+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m14",
+    "name": "retired · sup_repro+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m15",
+    "name": "retired · broken+sup_repro+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m16",
+    "name": "retired · fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m17",
+    "name": "retired · broken+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m18",
+    "name": "retired · sup_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m19",
+    "name": "retired · broken+sup_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m20",
+    "name": "retired · sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m21",
+    "name": "retired · broken+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m22",
+    "name": "retired · sup_repro+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m23",
+    "name": "retired · broken+sup_repro+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m24",
+    "name": "retired · fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m25",
+    "name": "retired · broken+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m26",
+    "name": "retired · sup_repro+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m27",
+    "name": "retired · broken+sup_repro+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m28",
+    "name": "retired · sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m29",
+    "name": "retired · broken+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m30",
+    "name": "retired · sup_repro+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  },
+  {
+    "id": "EX-r1-m31",
+    "name": "retired · broken+sup_repro+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [],
+    "expect": "audit_only"
+  }
+]

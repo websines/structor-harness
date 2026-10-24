@@ -1,0 +1,8 @@
+{
+  "id": "V1",
+  "name": "no evidence",
+  "obligation": { "domainTags": ["x"], "acceptancePolicy": "p", "retired": false },
+  "evidence": [],
+  "supersessions": [],
+  "expect": "open"
+}

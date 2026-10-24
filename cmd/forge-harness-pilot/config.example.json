@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "project": "forge-harness-pilot",
+  "model": "gpt-6-luna",
+  "baseURL": "https://api.openai.com/v1",
+  "apiKeyEnv": "FORGE_PILOT_API_KEY",
+  "rates": {
+    "input": 0.25,
+    "output": 0.75,
+    "actual": {"input": 0.10, "cached_input": 0.01, "cache_write": 0.125, "output": 0.50},
+    "actualMaxInput": 272000
+  },
+  "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+  "split": "development",
+  "repeats": 1,
+  "trial": {"input": 500000, "output": 40000, "usd": 5, "calls": 150},
+  "total": {"input": 10000000, "output": 1000000, "usd": 5, "calls": 10000},
+  "timeoutSeconds": 86400,
+  "trialSeconds": 1800,
+  "executionSeconds": 300,
+  "maxSteps": 24,
+  "maxOutput": 4096
+}

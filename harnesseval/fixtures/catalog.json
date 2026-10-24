@@ -1,0 +1,722 @@
+[
+  {
+    "task": {
+      "id": "stable-dedup",
+      "family": "repair",
+      "prompt": "Fix Unique to remove repeated strings while preserving first occurrence order and without modifying its input.",
+      "source": ""
+    },
+    "split": "development",
+    "provenance": "Authored Forge pilot fixture; independent scenario stable-dedup; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Unique(xs []string) []string { return xs }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Unique([]string{\"a\",\"b\"})); got!=\"[a b]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Unique(xs []string) []string { out:=[]string{}; seen:=map[string]bool{}; for _,x:=range xs { if !seen[x] {seen[x]=true;out=append(out,x)} }; return out }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Unique([]string{\"a\",\"b\"})); got!=\"[a b]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Unique(xs []string) []string { return []string{\"a\",\"b\"} }\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Unique([]string{\"a\",\"b\"})); got!=\"[a b]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Unique(xs []string) []string { out:=[]string{}; seen:=map[string]bool{}; for _,x:=range xs { if !seen[x] {seen[x]=true;out=append(out,x)} }; return out }\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Unique([]string{\"a\",\"b\",\"a\",\"\"})); got!=\"[a b ]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Unique([]string{\"x\",\"x\",\"x\"})); got!=\"[x]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Unique(nil)); got!=\"[]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "retry-attempts",
+      "family": "repair",
+      "prompt": "Fix Attempts: retries means additional attempts after the first. Clamp negative retries to zero and cap total attempts at ten.",
+      "source": ""
+    },
+    "split": "development",
+    "provenance": "Authored Forge pilot fixture; independent scenario retry-attempts; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Attempts(retries int) int { return retries }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Attempts(1)); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Attempts(retries int) int { if retries<0{return 1};if retries>=9{return 10};return retries+1 }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Attempts(1)); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Attempts(retries int) int { return retries }\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Attempts(1)); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Attempts(retries int) int { if retries<0{return 1};if retries>=9{return 10};return retries+1 }\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Attempts(-1)); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Attempts(0)); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Attempts(100)); got!=\"10\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "pagination-boundary",
+      "family": "repair",
+      "prompt": "Fix End(start,size,total) to return the exclusive end of a page. Clamp negative start/size to zero, clamp to total, and avoid integer overflow.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario pagination-boundary; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc End(start,size,total int) int { return start+size }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(End(2,3,10)); got!=\"5\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc End(start,size,total int) int { if total<0{total=0};if start<0{start=0};if start>total{return total};if size<0{size=0};if size>total-start{return total};return start+size }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(End(2,3,10)); got!=\"5\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc End(start,size,total int) int { return start+size }\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(End(2,3,10)); got!=\"5\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc End(start,size,total int) int { if total<0{total=0};if start<0{start=0};if start>total{return total};if size<0{size=0};if size>total-start{return total};return start+size }\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(End(8,5,10)); got!=\"10\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(End(-2,3,10)); got!=\"3\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(End(2,-1,10)); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(End(1,int(^uint(0)>>1),10)); got!=\"10\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "half-open-overlap",
+      "family": "repair",
+      "prompt": "Fix Overlap for half-open intervals [start,end). Empty or reversed intervals never overlap; touching endpoints do not overlap.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario half-open-overlap; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Overlap(a,b,c,d int) bool { return a<=d && c<=b }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Overlap(0,3,1,2)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Overlap(a,b,c,d int) bool { return a<b && c<d && a<d && c<b }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Overlap(0,3,1,2)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Overlap(a,b,c,d int) bool { return a<=d && c<=b }\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Overlap(0,3,1,2)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Overlap(a,b,c,d int) bool { return a<b && c<d && a<d && c<b }\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Overlap(0,2,2,4)); got!=\"false\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Overlap(1,1,0,2)); got!=\"false\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Overlap(4,2,0,6)); got!=\"false\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Overlap(-3,0,-1,2)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "bounded-backoff",
+      "family": "repair",
+      "prompt": "Fix Backoff(attempt) to return exponential delays starting at 1, doubling for each attempt, capped at 64. Treat negative attempts as zero and avoid overflow.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario bounded-backoff; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Backoff(n int) int { return 1<<n }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Backoff(2)); got!=\"4\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Backoff(n int) int { if n<0{return 1};if n>=6{return 64};return 1<<n }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Backoff(2)); got!=\"4\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Backoff(n int) int { return 1<<n }\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Backoff(2)); got!=\"4\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Backoff(n int) int { if n<0{return 1};if n>=6{return 64};return 1<<n }\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Backoff(-1)); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Backoff(100)); got!=\"64\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Backoff(6)); got!=\"64\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "stock-reservation",
+      "family": "repair",
+      "prompt": "Fix Reserve(stock,request) to reject nonpositive requests, negative stock and insufficient stock, returning unchanged stock and false; otherwise subtract atomically and return true.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario stock-reservation; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Reserve(stock,request int)(int,bool){return stock-request,true}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Reserve(10,3)); got!=\"7 true\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Reserve(stock,request int)(int,bool){if stock<0||request<=0||request>stock{return stock,false};return stock-request,true}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Reserve(10,3)); got!=\"7 true\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Reserve(stock,request int)(int,bool){return stock-request,true}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Reserve(10,3)); got!=\"7 true\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Reserve(stock,request int)(int,bool){if stock<0||request<=0||request>stock{return stock,false};return stock-request,true}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Reserve(2,3)); got!=\"2 false\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Reserve(10,0)); got!=\"10 false\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Reserve(10,-3)); got!=\"10 false\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Reserve(-1,1)); got!=\"-1 false\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "optional-limit",
+      "family": "contract",
+      "prompt": "Implement Limit: empty input keeps the legacy default 20; valid decimal limits are 1..100, all other inputs return 20.",
+      "source": ""
+    },
+    "split": "development",
+    "provenance": "Authored Forge pilot fixture; independent scenario optional-limit; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nimport \"strconv\"\nfunc Limit(s string) int { n,_:=strconv.Atoi(s);return n }\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Limit(\"7\")); got!=\"7\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport \"strconv\"\nfunc Limit(s string) int {n,e:=strconv.Atoi(s);if e!=nil||n<1||n>100{return 20};return n}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Limit(\"7\")); got!=\"7\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nimport \"strconv\"\nfunc Limit(s string) int { n,_:=strconv.Atoi(s);return n }\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Limit(\"7\")); got!=\"7\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport \"strconv\"\nfunc Limit(s string) int {n,e:=strconv.Atoi(s);if e!=nil||n<1||n>100{return 20};return n}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Limit(\"\")); got!=\"20\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Limit(\"-1\")); got!=\"20\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Limit(\"100\")); got!=\"100\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Limit(\"101\")); got!=\"20\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Limit(\"oops\")); got!=\"20\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "name-field-alias",
+      "family": "contract",
+      "prompt": "Extend Name(JSON): accept new display_name field and old name field; nonempty display_name wins, empty falls back to name, malformed JSON returns empty.",
+      "source": ""
+    },
+    "split": "development",
+    "provenance": "Authored Forge pilot fixture; independent scenario name-field-alias; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nimport \"encoding/json\"\nfunc Name(s string) string {var p struct{Name string `json:\"name\"`};json.Unmarshal([]byte(s),&p);return p.Name}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Name(`{\"name\":\"old\"}`)); got!=\"old\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport \"encoding/json\"\nfunc Name(s string) string {var p struct{Name string `json:\"name\"`;Display string `json:\"display_name\"`};if json.Unmarshal([]byte(s),&p)!=nil{return \"\"};if p.Display!=\"\"{return p.Display};return p.Name}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Name(`{\"name\":\"old\"}`)); got!=\"old\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nimport \"encoding/json\"\nfunc Name(s string) string {var p struct {Display string `json:\"display_name\"`};json.Unmarshal([]byte(s),&p);return p.Display}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Name(`{\"name\":\"old\"}`)); got!=\"old\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport \"encoding/json\"\nfunc Name(s string) string {var p struct{Name string `json:\"name\"`;Display string `json:\"display_name\"`};if json.Unmarshal([]byte(s),&p)!=nil{return \"\"};if p.Display!=\"\"{return p.Display};return p.Name}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Name(`{\"name\":\"old\",\"display_name\":\"new\"}`)); got!=\"new\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Name(`{\"name\":\"old\",\"display_name\":\"\"}`)); got!=\"old\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Name(`{\"name\":3}`)); got!=\"\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "status-aliases",
+      "family": "contract",
+      "prompt": "Extend Status to normalize legacy queued/running/done unchanged and new waiting/active/completed aliases; trim spaces, ignore case, return unknown for unrecognized input.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario status-aliases; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Status(s string)string{return s}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Status(\"running\")); got!=\"running\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport \"strings\"\nfunc Status(s string)string{switch strings.ToLower(strings.TrimSpace(s)){case \"queued\",\"waiting\":return \"queued\";case \"running\",\"active\":return \"running\";case \"done\",\"completed\":return \"done\"};return \"unknown\"}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Status(\"running\")); got!=\"running\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Status(s string)string{return s}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Status(\"running\")); got!=\"running\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport \"strings\"\nfunc Status(s string)string{switch strings.ToLower(strings.TrimSpace(s)){case \"queued\",\"waiting\":return \"queued\";case \"running\",\"active\":return \"running\";case \"done\",\"completed\":return \"done\"};return \"unknown\"}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Status(\" ACTIVE \")); got!=\"running\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Status(\"waiting\")); got!=\"queued\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Status(\"completed\")); got!=\"done\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Status(\"oops\")); got!=\"unknown\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "legacy-feature-flag",
+      "family": "contract",
+      "prompt": "Extend Flag to accept legacy 1/0 plus true/false, case insensitive and trimmed; an empty or invalid input uses the supplied fallback.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario legacy-feature-flag; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Flag(s string,fallback bool)bool{return s==\"1\"}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Flag(\"1\",false)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Flag(\"0\",true)); got!=\"false\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport \"strings\"\nfunc Flag(s string,fallback bool)bool{switch strings.ToLower(strings.TrimSpace(s)){case \"1\",\"true\":return true;case \"0\",\"false\":return false};return fallback}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Flag(\"1\",false)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Flag(\"0\",true)); got!=\"false\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Flag(s string,fallback bool)bool{return s==\"1\"}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Flag(\"1\",false)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Flag(\"0\",true)); got!=\"false\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport \"strings\"\nfunc Flag(s string,fallback bool)bool{switch strings.ToLower(strings.TrimSpace(s)){case \"1\",\"true\":return true;case \"0\",\"false\":return false};return fallback}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Flag(\" TRUE \",false)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Flag(\"\",true)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Flag(\"nope\",true)); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Flag(\"FALSE\",true)); got!=\"false\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "api-version",
+      "family": "contract",
+      "prompt": "Implement Version to preserve empty/v1 as version 1 and accept v2 as 2. Trim spaces, reject all other strings with 0; versions are case sensitive.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario api-version; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Version(s string)int{if s==\"v2\"{return 2};return 1}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Version(\"v1\")); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport \"strings\"\nfunc Version(s string)int{switch strings.TrimSpace(s){case \"\",\"v1\":return 1;case \"v2\":return 2};return 0}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Version(\"v1\")); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Version(s string)int{if s==\"v2\"{return 2};return 1}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Version(\"v1\")); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport \"strings\"\nfunc Version(s string)int{switch strings.TrimSpace(s){case \"\",\"v1\":return 1;case \"v2\":return 2};return 0}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Version(\" v2 \")); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Version(\"v3\")); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Version(\"V2\")); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Version(\"\")); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "nullable-owner",
+      "family": "contract",
+      "prompt": "Extend Owner(map) so a nonempty owner overrides legacy user, but empty/missing owner falls back to user; inputs must remain unchanged.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario nullable-owner; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Owner(m map[string]string)string{return m[\"owner\"]}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Owner(map[string]string{\"owner\":\"alice\"})); got!=\"alice\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Owner(m map[string]string)string{if s:=m[\"owner\"];s!=\"\"{return s};return m[\"user\"]}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Owner(map[string]string{\"owner\":\"alice\"})); got!=\"alice\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Owner(m map[string]string)string{return m[\"owner\"]}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Owner(map[string]string{\"owner\":\"alice\"})); got!=\"alice\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Owner(m map[string]string)string{if s:=m[\"owner\"];s!=\"\"{return s};return m[\"user\"]}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Owner(map[string]string{\"user\":\"bob\"})); got!=\"bob\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Owner(map[string]string{\"owner\":\"\",\"user\":\"bob\"})); got!=\"bob\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Owner(nil)); got!=\"\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "normalize-labels",
+      "family": "refactor",
+      "prompt": "Repair the shared normalization path: Labels must normalize each label using normalize (trim+lowercase), discard empty results and preserve order without mutating input.",
+      "source": ""
+    },
+    "split": "development",
+    "provenance": "Authored Forge pilot fixture; independent scenario normalize-labels; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Labels(xs []string)[]string{return xs}\n",
+      "helper.go": "package fixture\nimport \"strings\"\nfunc normalize(s string)string{return strings.ToLower(strings.TrimSpace(s))}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Labels([]string{\"a\",\"b\"})); got!=\"[a b]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Labels(xs []string)[]string{out:=[]string{};for _,x:=range xs{if s:=normalize(x);s!=\"\"{out=append(out,s)}};return out}\n",
+      "helper.go": "package fixture\nimport \"strings\"\nfunc normalize(s string)string{return strings.ToLower(strings.TrimSpace(s))}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Labels([]string{\"a\",\"b\"})); got!=\"[a b]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Labels(xs []string)[]string{return xs}\n",
+        "helper.go": "package fixture\nimport \"strings\"\nfunc normalize(s string)string{return strings.ToLower(strings.TrimSpace(s))}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Labels([]string{\"a\",\"b\"})); got!=\"[a b]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Labels(xs []string)[]string{out:=[]string{};for _,x:=range xs{if s:=normalize(x);s!=\"\"{out=append(out,s)}};return out}\n",
+        "helper.go": "package fixture\nimport \"strings\"\nfunc normalize(s string)string{return strings.ToLower(strings.TrimSpace(s))}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Labels([]string{\" A \",\" \",\"B\"})); got!=\"[a b]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Labels(nil)); got!=\"[]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "shared-fee",
+      "family": "refactor",
+      "prompt": "Repair both Quote and Refund to use the shared fee calculation: a positive amount pays a rounded-up 5 percent fee; nonpositive amounts produce zero.",
+      "source": ""
+    },
+    "split": "development",
+    "provenance": "Authored Forge pilot fixture; independent scenario shared-fee; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Quote(n int)int{return n};func Refund(n int)int{return n}\n",
+      "helper.go": "package fixture\nfunc fee(n int)int{return n/20+func()int{if n%20!=0{return 1};return 0}()}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Quote(0)); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Quote(n int)int{if n<=0{return 0};return n+fee(n)};func Refund(n int)int{if n<=0{return 0};return n-fee(n)}\n",
+      "helper.go": "package fixture\nfunc fee(n int)int{return n/20+func()int{if n%20!=0{return 1};return 0}()}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Quote(0)); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Quote(n int)int{return n};func Refund(n int)int{return n}\n",
+        "helper.go": "package fixture\nfunc fee(n int)int{return n/20+func()int{if n%20!=0{return 1};return 0}()}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Quote(0)); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Quote(n int)int{if n<=0{return 0};return n+fee(n)};func Refund(n int)int{if n<=0{return 0};return n-fee(n)}\n",
+        "helper.go": "package fixture\nfunc fee(n int)int{return n/20+func()int{if n%20!=0{return 1};return 0}()}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Quote(101)); got!=\"107\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Refund(101)); got!=\"95\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Quote(-1)); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Refund(-1)); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "copy-before-sort",
+      "family": "refactor",
+      "prompt": "Repair Sorted to sort a copy of its input ascending via the shared order helper. Preserve the caller slice; nil input returns an empty result.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario copy-before-sort; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Sorted(xs []int)[]int{order(xs);return xs}\n",
+      "helper.go": "package fixture\nimport \"sort\"\nfunc order(xs []int){sort.Ints(xs)}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Sorted([]int{2,1})); got!=\"[1 2]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Sorted(xs []int)[]int{out:=append([]int{},xs...);order(out);return out}\n",
+      "helper.go": "package fixture\nimport \"sort\"\nfunc order(xs []int){sort.Ints(xs)}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Sorted([]int{2,1})); got!=\"[1 2]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Sorted(xs []int)[]int{order(xs);return xs}\n",
+        "helper.go": "package fixture\nimport \"sort\"\nfunc order(xs []int){sort.Ints(xs)}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Sorted([]int{2,1})); got!=\"[1 2]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Sorted(xs []int)[]int{out:=append([]int{},xs...);order(out);return out}\n",
+        "helper.go": "package fixture\nimport \"sort\"\nfunc order(xs []int){sort.Ints(xs)}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(func()[]int{xs:=[]int{3,1,2};Sorted(xs);return xs}()); got!=\"[3 1 2]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Sorted(nil)); got!=\"[]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "shared-lookup",
+      "family": "refactor",
+      "prompt": "Repair Lookup and Exists to share canonical keys (trim and lowercase), without changing the original map. Lookup absent key returns empty; Exists distinguishes an empty stored value.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario shared-lookup; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Lookup(m map[string]string,k string)string{return m[k]};func Exists(m map[string]string,k string)bool{return m[k]!=\"\"}\n",
+      "helper.go": "package fixture\nimport \"strings\"\nfunc canonical(s string)string{return strings.ToLower(strings.TrimSpace(s))}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Lookup(map[string]string{\"a\":\"x\"},\"a\")); got!=\"x\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Lookup(m map[string]string,k string)string{return m[canonical(k)]};func Exists(m map[string]string,k string)bool{_,ok:=m[canonical(k)];return ok}\n",
+      "helper.go": "package fixture\nimport \"strings\"\nfunc canonical(s string)string{return strings.ToLower(strings.TrimSpace(s))}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Lookup(map[string]string{\"a\":\"x\"},\"a\")); got!=\"x\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Lookup(m map[string]string,k string)string{return m[k]};func Exists(m map[string]string,k string)bool{return m[k]!=\"\"}\n",
+        "helper.go": "package fixture\nimport \"strings\"\nfunc canonical(s string)string{return strings.ToLower(strings.TrimSpace(s))}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Lookup(map[string]string{\"a\":\"x\"},\"a\")); got!=\"x\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Lookup(m map[string]string,k string)string{return m[canonical(k)]};func Exists(m map[string]string,k string)bool{_,ok:=m[canonical(k)];return ok}\n",
+        "helper.go": "package fixture\nimport \"strings\"\nfunc canonical(s string)string{return strings.ToLower(strings.TrimSpace(s))}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Lookup(map[string]string{\"a\":\"x\"},\" A \")); got!=\"x\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Exists(map[string]string{\"a\":\"\"},\" A \")); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Exists(nil,\"a\")); got!=\"false\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "batch-boundary",
+      "family": "refactor",
+      "prompt": "Repair Batches to use shared end() bounds and return contiguous copied chunks of size n. Nonpositive n returns an empty list, and modifying a result must not mutate input.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario batch-boundary; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Batches(xs []int,n int)[][]int{if n<=0{return nil};return [][]int{xs}}\n",
+      "helper.go": "package fixture\nfunc end(i,n,total int)int{if n>total-i{return total};return i+n}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Batches([]int{1,2},2)); got!=\"[[1 2]]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Batches(xs []int,n int)[][]int{out:=[][]int{};if n<=0{return out};for i:=0;i<len(xs);i+=n{out=append(out,append([]int{},xs[i:end(i,n,len(xs))]...))};return out}\n",
+      "helper.go": "package fixture\nfunc end(i,n,total int)int{if n>total-i{return total};return i+n}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Batches([]int{1,2},2)); got!=\"[[1 2]]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Batches(xs []int,n int)[][]int{if n<=0{return nil};return [][]int{xs}}\n",
+        "helper.go": "package fixture\nfunc end(i,n,total int)int{if n>total-i{return total};return i+n}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Batches([]int{1,2},2)); got!=\"[[1 2]]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Batches(xs []int,n int)[][]int{out:=[][]int{};if n<=0{return out};for i:=0;i<len(xs);i+=n{out=append(out,append([]int{},xs[i:end(i,n,len(xs))]...))};return out}\n",
+        "helper.go": "package fixture\nfunc end(i,n,total int)int{if n>total-i{return total};return i+n}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Batches([]int{1,2,3},2)); got!=\"[[1 2] [3]]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Batches([]int{1},0)); got!=\"[]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(func()[]int{xs:=[]int{1,2};ys:=Batches(xs,1);ys[0][0]=9;return xs}()); got!=\"[1 2]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "cancelled-total",
+      "family": "refactor",
+      "prompt": "Repair Count and Total so both exclude cancelled orders using shared live(). Total sums nonnegative amounts of live orders; Count counts live orders regardless of amount.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario cancelled-total; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Count(xs []Order)int{return len(xs)};func Total(xs []Order)int{n:=0;for _,x:=range xs{n+=x.Amount};return n}\n",
+      "helper.go": "package fixture\ntype Order struct{Amount int;Cancelled bool};func live(x Order)bool{return !x.Cancelled}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Count([]Order{{Amount:2}})); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Count(xs []Order)int{n:=0;for _,x:=range xs{if live(x){n++}};return n};func Total(xs []Order)int{n:=0;for _,x:=range xs{if live(x)&&x.Amount>0{n+=x.Amount}};return n}\n",
+      "helper.go": "package fixture\ntype Order struct{Amount int;Cancelled bool};func live(x Order)bool{return !x.Cancelled}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Count([]Order{{Amount:2}})); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Count(xs []Order)int{return len(xs)};func Total(xs []Order)int{n:=0;for _,x:=range xs{n+=x.Amount};return n}\n",
+        "helper.go": "package fixture\ntype Order struct{Amount int;Cancelled bool};func live(x Order)bool{return !x.Cancelled}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Count([]Order{{Amount:2}})); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Count(xs []Order)int{n:=0;for _,x:=range xs{if live(x){n++}};return n};func Total(xs []Order)int{n:=0;for _,x:=range xs{if live(x)&&x.Amount>0{n+=x.Amount}};return n}\n",
+        "helper.go": "package fixture\ntype Order struct{Amount int;Cancelled bool};func live(x Order)bool{return !x.Cancelled}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Count([]Order{{Cancelled:true},{Amount:-2}})); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Total([]Order{{Amount:5},{Amount:7,Cancelled:true},{Amount:-3}})); got!=\"5\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "strict-port-config",
+      "family": "recovery",
+      "prompt": "Repair Port: accept decimal ports 1..65535, preserve default 8080 for blank input, and return 0 on other invalid input rather than silently accepting it.",
+      "source": ""
+    },
+    "split": "development",
+    "provenance": "Authored Forge pilot fixture; independent scenario strict-port-config; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nimport \"strconv\"\nfunc Port(s string)int{n,_:=strconv.Atoi(s);return n}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Port(\"80\")); got!=\"80\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport \"strconv\"\nfunc Port(s string)int{if s==\"\"{return 8080};n,e:=strconv.Atoi(s);if e!=nil||n<1||n>65535{return 0};return n}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Port(\"80\")); got!=\"80\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nimport \"strconv\"\nfunc Port(s string)int{n,_:=strconv.Atoi(s);return n}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Port(\"80\")); got!=\"80\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport \"strconv\"\nfunc Port(s string)int{if s==\"\"{return 8080};n,e:=strconv.Atoi(s);if e!=nil||n<1||n>65535{return 0};return n}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Port(\"\")); got!=\"8080\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Port(\"65536\")); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Port(\"oops\")); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Port(\"-1\")); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "atomic-config-merge",
+      "family": "recovery",
+      "prompt": "Repair Merge: overlay nonempty keys into a fresh map; any empty key rejects the entire operation by returning nil, and the original map must never be changed.",
+      "source": ""
+    },
+    "split": "development",
+    "provenance": "Authored Forge pilot fixture; independent scenario atomic-config-merge; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Merge(base,patch map[string]string)map[string]string{for k,v:=range patch{base[k]=v};return base}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Merge(map[string]string{\"a\":\"1\"},map[string]string{\"a\":\"2\"})[\"a\"]); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Merge(base,patch map[string]string)map[string]string{for k:=range patch{if k==\"\"{return nil}};out:=map[string]string{};for k,v:=range base{out[k]=v};for k,v:=range patch{out[k]=v};return out}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Merge(map[string]string{\"a\":\"1\"},map[string]string{\"a\":\"2\"})[\"a\"]); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Merge(base,patch map[string]string)map[string]string{for k,v:=range patch{base[k]=v};return base}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Merge(map[string]string{\"a\":\"1\"},map[string]string{\"a\":\"2\"})[\"a\"]); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Merge(base,patch map[string]string)map[string]string{for k:=range patch{if k==\"\"{return nil}};out:=map[string]string{};for k,v:=range base{out[k]=v};for k,v:=range patch{out[k]=v};return out}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(func()string{m:=map[string]string{\"a\":\"1\"};Merge(m,map[string]string{\"a\":\"2\"});return m[\"a\"]}()); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Merge(nil,map[string]string{\"a\":\"2\"})[\"a\"]); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Merge(nil,map[string]string{\"\":\"x\"})==nil); got!=\"true\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "duration-parse",
+      "family": "recovery",
+      "prompt": "Repair Seconds so valid Go duration strings return whole nonnegative seconds, including zero; invalid or negative durations return -1.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario duration-parse; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nimport \"time\"\nfunc Seconds(s string)int64{d,_:=time.ParseDuration(s);return int64(d.Seconds())}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Seconds(\"2s\")); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport \"time\"\nfunc Seconds(s string)int64{d,e:=time.ParseDuration(s);if e!=nil||d<0{return -1};return int64(d/time.Second)}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Seconds(\"2s\")); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nimport \"time\"\nfunc Seconds(s string)int64{d,_:=time.ParseDuration(s);return int64(d.Seconds())}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Seconds(\"2s\")); got!=\"2\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport \"time\"\nfunc Seconds(s string)int64{d,e:=time.ParseDuration(s);if e!=nil||d<0{return -1};return int64(d/time.Second)}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Seconds(\"bad\")); got!=\"-1\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Seconds(\"-1s\")); got!=\"-1\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Seconds(\"1500ms\")); got!=\"1\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Seconds(\"0s\")); got!=\"0\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "safe-relative-path",
+      "family": "recovery",
+      "prompt": "Repair SafePath: accept only nonempty relative slash paths with no .. component and no backslashes; clean redundant separators/dot segments and return empty for unsafe input.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario safe-relative-path; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nimport \"path\"\nfunc SafePath(s string)string{return path.Clean(s)}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(SafePath(\"a/b\")); got!=\"a/b\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport(\"path\";\"strings\")\nfunc SafePath(s string)string{if s==\"\"||strings.HasPrefix(s,\"/\")||strings.Contains(s,\"\\\\\"){return \"\"};for _,x:=range strings.Split(s,\"/\"){if x==\"..\"{return \"\"}};v:=path.Clean(s);if v==\".\"{return \"\"};return v}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(SafePath(\"a/b\")); got!=\"a/b\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nimport \"path\"\nfunc SafePath(s string)string{return path.Clean(s)}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(SafePath(\"a/b\")); got!=\"a/b\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport(\"path\";\"strings\")\nfunc SafePath(s string)string{if s==\"\"||strings.HasPrefix(s,\"/\")||strings.Contains(s,\"\\\\\"){return \"\"};for _,x:=range strings.Split(s,\"/\"){if x==\"..\"{return \"\"}};v:=path.Clean(s);if v==\".\"{return \"\"};return v}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(SafePath(\"a/../secret\")); got!=\"\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(SafePath(\"/secret\")); got!=\"\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(SafePath(\"a//./b\")); got!=\"a/b\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(SafePath(\"\")); got!=\"\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "required-env-config",
+      "family": "recovery",
+      "prompt": "Repair Required: trim a configuration value, return it if nonempty, otherwise return the exact error message missing configuration. Empty whitespace must count as missing.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario required-env-config; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Required(s string)(string,string){return s,\"\"}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Required(\"ok\")); got!=\"ok\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nimport \"strings\"\nfunc Required(s string)(string,string){s=strings.TrimSpace(s);if s==\"\"{return \"\",\"missing configuration\"};return s,\"\"}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Required(\"ok\")); got!=\"ok\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Required(s string)(string,string){return s,\"\"}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Required(\"ok\")); got!=\"ok\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nimport \"strings\"\nfunc Required(s string)(string,string){s=strings.TrimSpace(s);if s==\"\"{return \"\",\"missing configuration\"};return s,\"\"}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Required(\" ok \")); got!=\"ok\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Required(\"   \")); got!=\"missing configuration\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Required(\"\")); got!=\"missing configuration\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  },
+  {
+    "task": {
+      "id": "bounded-log-tail",
+      "family": "recovery",
+      "prompt": "Repair Tail: return the last n log lines in original order as a copy. Nonpositive n gives an empty result and n above length gives all lines.",
+      "source": ""
+    },
+    "split": "evaluation",
+    "provenance": "Authored Forge pilot fixture; independent scenario bounded-log-tail; no production incident claim.",
+    "source": {
+      "main.go": "package fixture\nfunc Tail(xs []string,n int)[]string{return xs[:n]}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Tail([]string{\"a\"},1)); got!=\"[a]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "gold": {
+      "main.go": "package fixture\nfunc Tail(xs []string,n int)[]string{if n<=0{return []string{}};if n>len(xs){n=len(xs)};return append([]string{},xs[len(xs)-n:]...)}\n",
+      "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Tail([]string{\"a\"},1)); got!=\"[a]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+    },
+    "mutations": [
+      {
+        "main.go": "package fixture\nfunc Tail(xs []string,n int)[]string{return xs[:n]}\n",
+        "public_test.go": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestPublic(t *testing.T) {\nif got:=fmt.Sprint(Tail([]string{\"a\"},1)); got!=\"[a]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+      },
+      {
+        "main.go": "package fixture\nfunc Tail(xs []string,n int)[]string{if n<=0{return []string{}};if n>len(xs){n=len(xs)};return append([]string{},xs[len(xs)-n:]...)}\n",
+        "public_test.go": ""
+      }
+    ],
+    "privateTests": "package fixture\nimport (\"testing\"; \"fmt\")\nfunc TestAcceptance(t *testing.T) {\nif got:=fmt.Sprint(Tail([]string{\"a\",\"b\",\"c\"},2)); got!=\"[b c]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Tail([]string{\"a\"},9)); got!=\"[a]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Tail(nil,0)); got!=\"[]\" { t.Errorf(\"unexpected result: %s\",got) }\nif got:=fmt.Sprint(Tail([]string{\"a\"},-1)); got!=\"[]\" { t.Errorf(\"unexpected result: %s\",got) }\n}\n"
+  }
+]

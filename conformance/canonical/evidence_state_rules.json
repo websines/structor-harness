@@ -1,0 +1,18 @@
+{
+  "note": "CANONICAL evidence→state rule table for the resolver (system design §8). SINGLE SOURCE OF TRUTH: engine/internal/resolver/ruletable_gen.go is GENERATED from this file by `go run ./internal/resolver/canongen`, and proofs/ForgeProofs/Canonical.lean proves the Lean model equals this same table. Priority-ordered — the FIRST rule whose guard (a conjunction of predicate==true) holds wins; precedence encodes the negative conditions. Evidence→state ONLY: the supersession GRAPH (reopened / crossTypeInvalidated) is Phase 3 and deliberately absent here.",
+  "predicates": {
+    "retired": "the obligation's scope is retired (kept for history, never governs)",
+    "has_witness": "some valid, in-scope, REPRODUCIBLE falsifier exists (a witness — testimony is never a witness)",
+    "testimonial_conflict": "a valid testimonial SUPPORT and a valid in-scope testimonial FALSIFIER both exist (implies has_valid_support)",
+    "has_valid_support": "some valid support exists",
+    "broken": "some invalid evidence exists"
+  },
+  "rules": [
+    { "guard": ["retired"],              "state": "audit_only" },
+    { "guard": ["has_witness"],          "state": "falsified" },
+    { "guard": ["testimonial_conflict"], "state": "contested" },
+    { "guard": ["has_valid_support"],    "state": "discharged" },
+    { "guard": ["broken"],               "state": "unverifiable" },
+    { "guard": [],                       "state": "open" }
+  ]
+}

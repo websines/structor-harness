@@ -1,0 +1,2720 @@
+[
+  {
+    "id": "RE-r0-m00",
+    "name": "reopen · no-evidence",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": null,
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m01",
+    "name": "reopen · broken",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m02",
+    "name": "reopen · sup_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m03",
+    "name": "reopen · broken+sup_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m04",
+    "name": "reopen · sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m05",
+    "name": "reopen · broken+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m06",
+    "name": "reopen · sup_repro+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m07",
+    "name": "reopen · broken+sup_repro+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m08",
+    "name": "reopen · fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m09",
+    "name": "reopen · broken+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m10",
+    "name": "reopen · sup_repro+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m11",
+    "name": "reopen · broken+sup_repro+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m12",
+    "name": "reopen · sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m13",
+    "name": "reopen · broken+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m14",
+    "name": "reopen · sup_repro+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m15",
+    "name": "reopen · broken+sup_repro+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m16",
+    "name": "reopen · fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m17",
+    "name": "reopen · broken+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m18",
+    "name": "reopen · sup_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m19",
+    "name": "reopen · broken+sup_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m20",
+    "name": "reopen · sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m21",
+    "name": "reopen · broken+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m22",
+    "name": "reopen · sup_repro+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m23",
+    "name": "reopen · broken+sup_repro+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "reopened"
+  },
+  {
+    "id": "RE-r0-m24",
+    "name": "reopen · fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m25",
+    "name": "reopen · broken+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m26",
+    "name": "reopen · sup_repro+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m27",
+    "name": "reopen · broken+sup_repro+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m28",
+    "name": "reopen · sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m29",
+    "name": "reopen · broken+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m30",
+    "name": "reopen · sup_repro+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r0-m31",
+    "name": "reopen · broken+sup_repro+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": false
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "falsified"
+  },
+  {
+    "id": "RE-r1-m00",
+    "name": "retired·reopen · no-evidence",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": null,
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m01",
+    "name": "retired·reopen · broken",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m02",
+    "name": "retired·reopen · sup_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m03",
+    "name": "retired·reopen · broken+sup_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m04",
+    "name": "retired·reopen · sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m05",
+    "name": "retired·reopen · broken+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m06",
+    "name": "retired·reopen · sup_repro+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m07",
+    "name": "retired·reopen · broken+sup_repro+sup_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m08",
+    "name": "retired·reopen · fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m09",
+    "name": "retired·reopen · broken+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m10",
+    "name": "retired·reopen · sup_repro+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m11",
+    "name": "retired·reopen · broken+sup_repro+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m12",
+    "name": "retired·reopen · sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m13",
+    "name": "retired·reopen · broken+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m14",
+    "name": "retired·reopen · sup_repro+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m15",
+    "name": "retired·reopen · broken+sup_repro+sup_test+fals_repro",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m16",
+    "name": "retired·reopen · fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m17",
+    "name": "retired·reopen · broken+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m18",
+    "name": "retired·reopen · sup_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m19",
+    "name": "retired·reopen · broken+sup_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m20",
+    "name": "retired·reopen · sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m21",
+    "name": "retired·reopen · broken+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m22",
+    "name": "retired·reopen · sup_repro+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m23",
+    "name": "retired·reopen · broken+sup_repro+sup_test+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m24",
+    "name": "retired·reopen · fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m25",
+    "name": "retired·reopen · broken+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m26",
+    "name": "retired·reopen · sup_repro+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m27",
+    "name": "retired·reopen · broken+sup_repro+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m28",
+    "name": "retired·reopen · sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m29",
+    "name": "retired·reopen · broken+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m30",
+    "name": "retired·reopen · sup_repro+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  },
+  {
+    "id": "RE-r1-m31",
+    "name": "retired·reopen · broken+sup_repro+sup_test+fals_repro+fals_test",
+    "obligation": {
+      "domainTags": [
+        "x"
+      ],
+      "acceptancePolicy": "p",
+      "retired": true
+    },
+    "evidence": [
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "invalid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "supports",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "deterministic",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      },
+      {
+        "polarity": "falsifies",
+        "method": "executed_test",
+        "reproducibility": "testimonial",
+        "validity": "valid",
+        "scopeTags": [
+          "x"
+        ]
+      }
+    ],
+    "supersessions": [
+      {
+        "kind": "cross_type_invalidation",
+        "subject": "O-TEST"
+      }
+    ],
+    "expect": "audit_only"
+  }
+]

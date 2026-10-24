@@ -1,0 +1,11 @@
+{
+  "id": "V7",
+  "name": "out-of-scope reproducible falsifier + support",
+  "obligation": { "domainTags": ["x"], "acceptancePolicy": "p", "retired": false },
+  "evidence": [
+    { "polarity": "supports", "method": "executed_test", "reproducibility": "deterministic", "validity": "valid", "scopeTags": ["x"] },
+    { "polarity": "falsifies", "method": "executed_test", "reproducibility": "deterministic", "validity": "valid", "scopeTags": ["z"] }
+  ],
+  "supersessions": [],
+  "expect": "discharged"
+}

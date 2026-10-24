@@ -1,0 +1,10 @@
+{
+  "id": "V2",
+  "name": "one deterministic support",
+  "obligation": { "domainTags": ["x"], "acceptancePolicy": "p", "retired": false },
+  "evidence": [
+    { "polarity": "supports", "method": "executed_test", "reproducibility": "deterministic", "validity": "valid", "scopeTags": ["x"] }
+  ],
+  "supersessions": [],
+  "expect": "discharged"
+}

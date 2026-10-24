@@ -1,0 +1,11 @@
+{
+  "id": "V3",
+  "name": "support + reproducible in-scope witness",
+  "obligation": { "domainTags": ["x"], "acceptancePolicy": "p", "retired": false },
+  "evidence": [
+    { "polarity": "supports", "method": "executed_test", "reproducibility": "deterministic", "validity": "valid", "scopeTags": ["x"] },
+    { "polarity": "falsifies", "method": "executed_test", "reproducibility": "deterministic", "validity": "valid", "scopeTags": ["x"] }
+  ],
+  "supersessions": [],
+  "expect": "falsified"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "V8",
+  "name": "retired scope is audit-only",
+  "obligation": { "domainTags": ["x"], "acceptancePolicy": "p", "retired": true },
+  "evidence": [
+    { "polarity": "supports", "method": "executed_test", "reproducibility": "deterministic", "validity": "valid", "scopeTags": ["x"] }
+  ],
+  "supersessions": [],
+  "expect": "audit_only"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "V5",
+  "name": "testimonial support vs testimonial falsifier",
+  "obligation": { "domainTags": ["x"], "acceptancePolicy": "p", "retired": false },
+  "evidence": [
+    { "polarity": "supports", "method": "human_attestation", "reproducibility": "testimonial", "validity": "valid", "scopeTags": ["x"] },
+    { "polarity": "falsifies", "method": "human_attestation", "reproducibility": "testimonial", "validity": "valid", "scopeTags": ["x"] }
+  ],
+  "supersessions": [],
+  "expect": "contested"
+}
